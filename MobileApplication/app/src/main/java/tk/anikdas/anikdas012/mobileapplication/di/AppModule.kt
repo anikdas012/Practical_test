@@ -13,7 +13,9 @@ import javax.inject.Singleton
  * Developer email: "anikdas012@gmail.com"
  */
 
-@Module
+@Module(
+    subcomponents = [FragmentComponent::class]
+)
 object AppModule {
 
     @Singleton
