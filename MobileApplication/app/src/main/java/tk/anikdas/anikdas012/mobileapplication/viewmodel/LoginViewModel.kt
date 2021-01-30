@@ -15,7 +15,7 @@ import javax.inject.Inject
 
 class LoginViewModel @Inject constructor(private val loginApi: LoginApi): ViewModel() {
 
-    fun createUser(user: LogInDetails): LiveData<LogInDetails> {
+    fun loginUser(user: LogInDetails): LiveData<LogInDetails> {
         return LiveDataReactiveStreams.fromPublisher(
             loginApi.login(user)
                 .onErrorReturn {
