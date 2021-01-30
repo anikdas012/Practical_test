@@ -2,7 +2,6 @@ package tk.anikdas.anikdas012.mobileapplication.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import io.reactivex.Flowable
-import io.reactivex.Single
 import org.hamcrest.CoreMatchers.`is`
 import org.junit.Assert.*
 import org.junit.Before
@@ -56,5 +55,26 @@ class CreateViewModelTest {
         assertNotNull(viewModel.createUser(userDetails))
         val value = viewModel.createUser(userDetails).getOrAwaitValueTest()
         assertThat(value.createdAt?.toInt(), `is`(-1))
+    }
+
+    @Test
+    fun `Create user`() {
+        val userDetails = UserDetails(
+            username = "name",
+            email = "demo@demo.com",
+            password = "demo",
+            confirmPassword = "demo"
+        )
+        val response = UserDetails(
+            username = "name",
+            email = "demo@demo.com",
+            createdAt = System.currentTimeMillis(),
+            password = null,
+            confirmPassword = null
+        )
+        `when`(createApi.createAccount(userDetails)).thenReturn(Flowable.just(response))
+        assertNotNull(viewModel.createUser(userDetails))
+        val value = viewModel.createUser(userDetails).getOrAwaitValueTest()
+        assertThat(value.email, `is`(userDetails.email))
     }
 }
