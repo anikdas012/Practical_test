@@ -50,6 +50,13 @@ class LogInFragment : Fragment() {
             Navigation.findNavController(this.activity as Activity, R.id.nav_host_fragment)
                 .navigate(R.id.createFragment)
         }
+        binding.loginTextview.setOnClickListener {
+            logInUser()
+        }
+    }
+
+    private fun logInUser() {
+
     }
 
     override fun onAttach(context: Context) {
