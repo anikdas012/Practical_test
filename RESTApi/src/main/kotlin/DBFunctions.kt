@@ -24,3 +24,6 @@ fun addUser(user: User, db: Database): String {
     }
     return result!!
 }
+
+fun getUsers(db: Database): List<User> {
+}
