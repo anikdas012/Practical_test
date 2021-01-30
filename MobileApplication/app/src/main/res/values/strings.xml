@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MobileApplication</string>
+    <string name="tasks_and_assign">Tasks and assign</string>
+    <string name="task_and_assign_them_to_colleauges">Task and assign them to colleauges.</string>
+    <string name="log_in">Log In</string>
+    <string name="get_started">Get Started</string>
 </resources>
