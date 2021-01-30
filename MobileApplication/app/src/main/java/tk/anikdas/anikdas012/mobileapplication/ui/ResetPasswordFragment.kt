@@ -18,6 +18,7 @@ import tk.anikdas.anikdas012.mobileapplication.databinding.FragmentResetPassword
 class ResetPasswordFragment : Fragment() {
 
     private lateinit var binding: FragmentResetPasswordBinding
+    private lateinit var username: String
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,6 +32,7 @@ class ResetPasswordFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        username = arguments?.getString("username")!!
         binding.loginTextview.setOnClickListener {
             Navigation.findNavController(this.activity as Activity, R.id.nav_host_fragment)
                 .navigate(R.id.loginFragment)
