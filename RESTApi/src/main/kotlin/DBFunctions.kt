@@ -83,4 +83,22 @@ fun deleteUser(user: User, db: Database): String {
 }
 
 fun resetUserPass(user: User, db: Database): String {
+    var result: String? = null
+    transaction(db) {
+        val sql = "UPDATE User SET PasswordHash = \"${user.pass?.sha256()}\" WHERE Email = \"${user.email}\";"
+        try {
+            exec(sql)
+            exec("SELECT UserName, Email FROM User WHERE Email = \"${user.email}\";") {
+                while (it.next()) {
+                    result = "{\n" +
+                            "   \"name\": \"${it.getString(1)}\"\n" +
+                            "   \"email\": \"${it.getString(2)}\"\n" +
+                            "}"
+                }
+            }
+        } catch (e: Exception) {
+            result = "Not updated"
+        }
+    }
+    return result!!
 }
