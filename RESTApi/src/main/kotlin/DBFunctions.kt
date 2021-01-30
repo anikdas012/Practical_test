@@ -74,7 +74,7 @@ fun deleteUser(user: User, db: Database): String {
         val sql = "DELETE FROM User WHERE UserName = \"${user.name!!}\" and Email = \"${user.email!!}\""
         try {
             exec("SELECT UserName FROM USER WHERE UserName = \"${user.name!!}\" and Email = \"${user.email!!}\";") {
-                if (it.fetchSize > 0) {
+                if (it.next()) {
                     exec(sql)
                     result = "Deleted"
                 } else {
