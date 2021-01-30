@@ -25,6 +25,9 @@ import javax.inject.Inject
 class LogInFragment : Fragment() {
 
     private lateinit var binding: FragmentLoginBinding
+    private lateinit var viewModel: CreateViewModel
+    @Inject
+    lateinit var providersFactory: ViewModelProvidersFactory
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,6 +41,7 @@ class LogInFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(this, providersFactory).get(CreateViewModel::class.java)
         binding.forgotPasswordTextview.setOnClickListener {
             Navigation.findNavController(this.activity as Activity, R.id.nav_host_fragment)
                 .navigate(R.id.forgotPasswordFragment)
