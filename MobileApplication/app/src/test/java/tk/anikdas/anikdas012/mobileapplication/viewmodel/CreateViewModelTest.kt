@@ -29,4 +29,11 @@ class CreateViewModelTest {
 
     @Mock
     lateinit var createApi: CreateApi
+    lateinit var viewModel: CreateViewModel
+
+    @Before
+    fun setUp() {
+        MockitoAnnotations.initMocks(this)
+        viewModel = CreateViewModel(createApi)
+    }
 }
