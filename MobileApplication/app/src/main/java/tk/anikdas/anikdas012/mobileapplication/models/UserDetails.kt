@@ -8,9 +8,9 @@ import com.google.gson.annotations.SerializedName
  */
 
 data class UserDetails(
-    @SerializedName("name") val username: String?,
-    @SerializedName("email") val email: String?,
-    @SerializedName("password") val password: String?,
-    @SerializedName("confirmPassword") val confirmPassword: String?,
-    @SerializedName("createdAt") val createdAt: Long?
+    @SerializedName("name") var username: String?,
+    @SerializedName("email") var email: String?,
+    @SerializedName("password") var password: String?,
+    @SerializedName("confirmPassword") var confirmPassword: String?,
+    @SerializedName("createdAt") var createdAt: Long?
 )
