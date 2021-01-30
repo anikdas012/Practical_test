@@ -10,10 +10,10 @@ fun connectDB(): Database {
 }
 
 fun addUser(user: User, db: Database): String {
-    user.pass = user.pass!!.sha256()
+    user.password = user.password!!.sha256()
     var result: String? = null
     transaction(db) {
-        val sql = "INSERT INTO User (UserName, Email, PasswordHash, CreatedAt) VALUES (\"${user.name}\", \"${user.email}\", \"${user.pass}\", ${user.time});"
+        val sql = "INSERT INTO User (UserName, Email, PasswordHash, CreatedAt) VALUES (\"${user.name}\", \"${user.email}\", \"${user.password}\", ${user.time});"
         try {
             exec(sql)
             result = "Success"
@@ -47,7 +47,7 @@ fun updateUser(user: User, db: Database): String {
     }
     var result: String? = null
     transaction(db) {
-        val sql = "UPDATE User SET UserName = \"${user.name}\", PasswordHash = \"${user.pass?.sha256()}\" WHERE Email = \"${user.email}\";"
+        val sql = "UPDATE User SET UserName = \"${user.name}\", PasswordHash = \"${user.password?.sha256()}\" WHERE Email = \"${user.email}\";"
         try {
             exec(sql)
             exec("SELECT UserName, Email FROM User WHERE Email = \"${user.email}\";") {
@@ -85,7 +85,7 @@ fun deleteUser(user: User, db: Database): String {
 fun resetUserPass(user: User, db: Database): String {
     var result: String? = null
     transaction(db) {
-        val sql = "UPDATE User SET PasswordHash = \"${user.pass?.sha256()}\" WHERE Email = \"${user.email}\";"
+        val sql = "UPDATE User SET PasswordHash = \"${user.password?.sha256()}\" WHERE Email = \"${user.email}\";"
         try {
             exec(sql)
             exec("SELECT UserName, Email FROM User WHERE Email = \"${user.email}\";") {
