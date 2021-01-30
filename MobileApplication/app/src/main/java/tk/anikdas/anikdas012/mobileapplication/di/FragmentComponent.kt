@@ -1,6 +1,7 @@
 package tk.anikdas.anikdas012.mobileapplication.di
 
 import dagger.Subcomponent
+import tk.anikdas.anikdas012.mobileapplication.MainActivity
 import tk.anikdas.anikdas012.mobileapplication.ui.CreateFragment
 
 /**
@@ -17,5 +18,6 @@ interface FragmentComponent {
         fun build(): FragmentComponent
     }
 
+    fun inject(activity: MainActivity)
     fun inject(fragment: CreateFragment)
 }
