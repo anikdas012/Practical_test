@@ -121,9 +121,18 @@ fun createUser(user: UserDetails, db: Database): String {
         val sql = "INSERT INTO User (UserName, Email, PasswordHash, CreatedAt) VALUES (\"${user.name}\", \"${user.email}\", \"${user.password}\", ${user.time});"
         try {
             exec(sql)
-            result = "Success"
+            result = "{\n" +
+                    "    \"name\": \"${user.name}\"\n" +
+                    "    \"email\": \"${user.email}\"\n" +
+                    "    \"createdAt\": \"${user.time}\"\n" +
+                    "}"
         } catch (e: Exception) {
-            result = "Failed"
+            user.time = -1
+            result = "{\n" +
+                    "    \"name\": \"${user.name}\"\n" +
+                    "    \"email\": \"${user.email}\"\n" +
+                    "    \"createdAt\": \"${user.time}\"\n" +
+                    "}"
         }
 
     }
