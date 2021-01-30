@@ -6,7 +6,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import tk.anikdas.anikdas012.mobileapplication.MainActivity
@@ -58,7 +60,18 @@ class LogInFragment : Fragment() {
     }
 
     private fun logInUser() {
-
+        val user = LogInDetails(
+            email = binding.usernameEdittext.text.toString(),
+            password = binding.passwordEdittext.text.toString()
+        )
+        viewModel.loginUser(user).removeObservers(viewLifecycleOwner)
+        viewModel.loginUser(user).observe(viewLifecycleOwner, Observer { user ->
+            if (user.username != "Not found") {
+                Toast.makeText(this.context, "Login success!", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this.context, "Login fail!", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
     override fun onAttach(context: Context) {
