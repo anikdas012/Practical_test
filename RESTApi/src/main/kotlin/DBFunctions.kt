@@ -73,9 +73,17 @@ fun deleteUser(user: User, db: Database): String {
     transaction(db) {
         val sql = "DELETE FROM User WHERE UserName = \"${user.name!!}\" and Email = \"${user.email!!}\""
         try {
-            exec(sql)
-            result = "Deleted"
+            exec("SELECT UserName FROM USER WHERE UserName = \"${user.name!!}\" and Email = \"${user.email!!}\";") {
+                if (it.fetchSize > 0) {
+                    exec(sql)
+                    result = "Deleted"
+                } else {
+                    result = "Not deleted \n" +
+                            "Enter a valid 'name' and 'email'"
+                }
+            }
         } catch (e: Exception) {
+            println("*** $e")
             result = "Not deleted"
         }
     }
