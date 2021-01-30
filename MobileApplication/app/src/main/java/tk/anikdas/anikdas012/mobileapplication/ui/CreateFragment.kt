@@ -11,6 +11,9 @@ import androidx.navigation.Navigation
 import tk.anikdas.anikdas012.mobileapplication.MainActivity
 import tk.anikdas.anikdas012.mobileapplication.R
 import tk.anikdas.anikdas012.mobileapplication.databinding.FragmentCreateBinding
+import tk.anikdas.anikdas012.mobileapplication.viewmodel.CreateViewModel
+import tk.anikdas.anikdas012.mobileapplication.viewmodel.ViewModelProvidersFactory
+import javax.inject.Inject
 
 /**
  * Created by "Anik Das" on 30-Jan-2021
@@ -20,6 +23,9 @@ import tk.anikdas.anikdas012.mobileapplication.databinding.FragmentCreateBinding
 class CreateFragment : Fragment() {
 
     private lateinit var binding: FragmentCreateBinding
+    private lateinit var viewModel: CreateViewModel
+    @Inject
+    lateinit var providersFactory: ViewModelProvidersFactory
 
     override fun onCreateView(
         inflater: LayoutInflater,
