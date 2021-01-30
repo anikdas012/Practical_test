@@ -24,4 +24,6 @@ import tk.anikdas.anikdas012.mobileapplication.network.CreateApi
 
 @RunWith(JUnit4::class)
 class CreateViewModelTest {
+    @get:Rule
+    var instantTaskExecutorRule = InstantTaskExecutorRule()
 }
