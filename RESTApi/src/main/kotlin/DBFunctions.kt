@@ -26,4 +26,17 @@ fun addUser(user: User, db: Database): String {
 }
 
 fun getUsers(db: Database): List<User> {
+    var users: MutableList<User> = ArrayList()
+    transaction(db) {
+        exec("SELECT * FROM USER;") {
+            while (it.next()) {
+                val user = User(it.getString(2),
+                    it.getString(3),
+                    it.getString(4),
+                    it.getLong(5))
+                users.add(user)
+            }
+        }
+    }
+    return users
 }
