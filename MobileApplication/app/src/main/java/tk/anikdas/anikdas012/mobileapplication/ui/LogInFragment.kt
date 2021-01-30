@@ -35,5 +35,9 @@ class LogInFragment : Fragment() {
             Navigation.findNavController(this.activity as Activity, R.id.nav_host_fragment)
                 .navigate(R.id.forgotPasswordFragment)
         }
+        binding.signinTextview.setOnClickListener {
+            Navigation.findNavController(this.activity as Activity, R.id.nav_host_fragment)
+                .navigate(R.id.createFragment)
+        }
     }
 }
