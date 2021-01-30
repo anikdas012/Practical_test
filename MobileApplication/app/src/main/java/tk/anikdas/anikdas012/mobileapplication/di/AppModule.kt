@@ -5,6 +5,7 @@ import dagger.Provides
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import tk.anikdas.anikdas012.mobileapplication.network.CreateApi
 import javax.inject.Singleton
 
 /**
@@ -25,4 +26,9 @@ object AppModule {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
+
+    @Singleton
+    @JvmStatic
+    @Provides
+    fun provideCreateApi(retrofit: Retrofit): CreateApi = retrofit.create(CreateApi::class.java)
 }
