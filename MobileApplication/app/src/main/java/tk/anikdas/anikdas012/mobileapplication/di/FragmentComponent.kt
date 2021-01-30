@@ -3,6 +3,7 @@ package tk.anikdas.anikdas012.mobileapplication.di
 import dagger.Subcomponent
 import tk.anikdas.anikdas012.mobileapplication.MainActivity
 import tk.anikdas.anikdas012.mobileapplication.ui.CreateFragment
+import tk.anikdas.anikdas012.mobileapplication.ui.LogInFragment
 
 /**
  * Created by "Anik Das" on 30-Jan-2021
@@ -22,4 +23,5 @@ interface FragmentComponent {
     }
 
     fun inject(fragment: CreateFragment)
+    fun inject(fragment: LogInFragment)
 }
