@@ -35,5 +35,9 @@ class HomeFragment : Fragment() {
             Navigation.findNavController(this.activity as Activity, R.id.nav_host_fragment)
                 .navigate(R.id.loginFragment)
         }
+        binding.getStartedTextview.setOnClickListener {
+            Navigation.findNavController(this.activity as Activity, R.id.nav_host_fragment)
+                .navigate(R.id.createFragment)
+        }
     }
 }
