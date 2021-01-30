@@ -45,5 +45,10 @@ fun Route.api() {
             val result = loginUser(user, db)
             call.respond(HttpStatusCode.OK, result)
         }
+        post ("/resetPassword") {
+            val user = call.receive<ResetPassword>()
+            val result = resetUserPassword(user, db)
+            call.respond(HttpStatusCode.OK, result)
+        }
     }
 }

@@ -18,3 +18,11 @@ data class UserLogin(
     var email: String?,
     var password: String?
 )
+
+data class ResetPassword(
+    var username: String? = null,
+    var email: String?,
+    var password: String?,
+    var confirmPassword: String?,
+    var code: String?
+)

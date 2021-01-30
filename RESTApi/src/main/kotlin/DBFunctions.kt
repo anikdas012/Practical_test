@@ -99,8 +99,8 @@ fun resetUserPass(user: User, db: Database): String {
             exec("SELECT UserName, Email FROM User WHERE Email = \"${user.email}\";") {
                 while (it.next()) {
                     result = "{\n" +
-                            "   \"name\": \"${it.getString(1)}\"\n" +
-                            "   \"email\": \"${it.getString(2)}\"\n" +
+                            "   \"name\": \"${it.getString(1)}\",\n" +
+                            "   \"email\": \"${it.getString(2)}\",\n" +
                             "}"
                 }
             }
@@ -164,6 +164,36 @@ fun loginUser(user: UserLogin, db: Database): String {
                     "}"
         }
 
+    }
+    return result!!
+}
+
+fun resetUserPassword(user: ResetPassword, db: Database): String {
+    if (user.password != user.confirmPassword) {
+        return "{\n" +
+                "    \"name\": \"Not updated\",\n" +
+                "    \"email\": \"${user.email}\"\n"
+                "}"
+    }
+    var result: String? = null
+    transaction(db) {
+        val sql = "UPDATE User SET PasswordHash = \"${user.password?.sha256()}\" WHERE Email = \"${user.email}\";"
+        try {
+            exec(sql)
+            exec("SELECT UserName, Email FROM User WHERE Email = \"${user.email}\";") {
+                while (it.next()) {
+                    result = "{\n" +
+                            "   \"name\": \"${it.getString(1)}\",\n" +
+                            "   \"email\": \"${it.getString(2)}\"\n" +
+                            "}"
+                }
+            }
+        } catch (e: Exception) {
+            result = "{\n" +
+                    "    \"name\": \"Not updated\",\n" +
+                    "    \"email\": \"${user.email}\"\n"
+            "}"
+        }
     }
     return result!!
 }
