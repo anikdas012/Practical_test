@@ -47,6 +47,13 @@ class ResetPasswordFragment : Fragment() {
             Navigation.findNavController(this.activity as Activity, R.id.nav_host_fragment)
                 .navigate(R.id.loginFragment)
         }
+        binding.changePasswordTextview.setOnClickListener {
+            resetPassword()
+        }
+    }
+
+    private fun resetPassword() {
+        TODO("Not yet implemented")
     }
 
     override fun onAttach(context: Context) {
