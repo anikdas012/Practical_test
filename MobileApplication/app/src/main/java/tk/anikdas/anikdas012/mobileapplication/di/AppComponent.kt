@@ -23,4 +23,6 @@ interface AppComponent {
 
         fun build() : AppComponent
     }
+
+    fun fragmentComponent(): FragmentComponent.Builder
 }
