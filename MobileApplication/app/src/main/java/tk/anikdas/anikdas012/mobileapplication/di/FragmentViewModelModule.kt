@@ -5,6 +5,7 @@ import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
 import tk.anikdas.anikdas012.mobileapplication.viewmodel.CreateViewModel
+import tk.anikdas.anikdas012.mobileapplication.viewmodel.LoginViewModel
 
 /**
  * Created by "Anik Das" on 30-Jan-2021
@@ -17,5 +18,10 @@ abstract class FragmentViewModelModule {
     @Binds
     @IntoMap
     @ViewModelKey(CreateViewModel::class)
-    abstract fun bindPostViewModel(viewModel: CreateViewModel): ViewModel
+    abstract fun bindCreateViewModel(viewModel: CreateViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(LoginViewModel::class)
+    abstract fun bindLoginViewModel(viewModel: LoginViewModel): ViewModel
 }
