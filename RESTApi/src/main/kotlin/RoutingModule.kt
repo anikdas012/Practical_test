@@ -24,5 +24,10 @@ fun Route.api() {
             val result = updateUser(user, db)
             call.respond(HttpStatusCode.OK, result)
         }
+        delete ("/user") {
+            val user = call.receive<User>()
+            val result = deleteUser(user, db)
+            call.respond(HttpStatusCode.OK, result)
+        }
     }
 }
