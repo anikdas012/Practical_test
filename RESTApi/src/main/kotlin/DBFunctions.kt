@@ -1,5 +1,13 @@
 import org.jetbrains.exposed.sql.Database
+import org.jetbrains.exposed.sql.transactions.TransactionManager
 import org.jetbrains.exposed.sql.transactions.transaction
+import java.sql.Connection
+
+fun connectDB(): Database {
+    val db = Database.connect("jdbc:sqlite:database\\todosqli.db" , "org.sqlite.JDBC")
+    TransactionManager.manager.defaultIsolationLevel = Connection.TRANSACTION_SERIALIZABLE
+    return db
+}
 
 fun addUser(user: User, db: Database): String {
     user.pass = user.pass!!.sha256()
