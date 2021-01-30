@@ -10,4 +10,9 @@ import dagger.Subcomponent
 @FragmentScope
 @Subcomponent
 interface FragmentComponent {
+
+    @Subcomponent.Builder
+    interface Builder {
+        fun build(): FragmentComponent
+    }
 }
