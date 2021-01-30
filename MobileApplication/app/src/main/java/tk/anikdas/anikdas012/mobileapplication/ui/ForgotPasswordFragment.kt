@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import tk.anikdas.anikdas012.mobileapplication.R
@@ -36,8 +37,9 @@ class ForgotPasswordFragment : Fragment() {
                 .navigate(R.id.loginFragment)
         }
         binding.requestTextview.setOnClickListener {
+            val username = bundleOf("username" to binding.usernameEdittext.text.toString())
             Navigation.findNavController(this.activity as Activity, R.id.nav_host_fragment)
-                .navigate(R.id.resetPasswordFragment)
+                .navigate(R.id.resetPasswordFragment, username)
         }
     }
 }
