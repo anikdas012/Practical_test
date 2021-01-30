@@ -10,7 +10,7 @@ fun Route.api() {
     val db: Database = connectDB()
     route("/api") {
         post ("/user") {
-            var user = call.receive<User>()
+            val user = call.receive<User>()
             user.time = System.currentTimeMillis()
             val result = addUser(user, db)
             call.respond(HttpStatusCode.OK, result)
@@ -20,7 +20,7 @@ fun Route.api() {
             call.respond(HttpStatusCode.OK, users)
         }
         put ("/user") {
-            var user = call.receive<User>()
+            val user = call.receive<User>()
             val result = updateUser(user, db)
             call.respond(HttpStatusCode.OK, result)
         }
