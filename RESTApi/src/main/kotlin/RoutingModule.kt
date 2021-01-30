@@ -19,5 +19,10 @@ fun Route.api() {
             val users = Gson().toJson(getUsers(db))
             call.respond(HttpStatusCode.OK, users)
         }
+        put ("/user") {
+            var user = call.receive<User>()
+            val result = updateUser(user, db)
+            call.respond(HttpStatusCode.OK, result)
+        }
     }
 }
