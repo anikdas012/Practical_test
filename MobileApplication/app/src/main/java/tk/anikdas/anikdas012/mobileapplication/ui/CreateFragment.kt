@@ -6,12 +6,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import tk.anikdas.anikdas012.mobileapplication.MainActivity
 import tk.anikdas.anikdas012.mobileapplication.R
 import tk.anikdas.anikdas012.mobileapplication.databinding.FragmentCreateBinding
+import tk.anikdas.anikdas012.mobileapplication.models.UserDetails
 import tk.anikdas.anikdas012.mobileapplication.viewmodel.CreateViewModel
 import tk.anikdas.anikdas012.mobileapplication.viewmodel.ViewModelProvidersFactory
 import javax.inject.Inject
@@ -51,7 +54,19 @@ class CreateFragment : Fragment() {
     }
 
     private fun createAccount() {
-        TODO("Not yet implemented")
+        val user = UserDetails(binding.usernameEdittext.text.toString(),
+                                binding.emailEdittext.text.toString(),
+                                binding.passwordEdittext.text.toString(),
+                                binding.conPasswordEdittext.text.toString())
+        viewModel.createUser(user).removeObservers(viewLifecycleOwner)
+        viewModel.createUser(user).observe(viewLifecycleOwner, Observer { user ->
+            if (user.createdAt!! > 0) {
+                Navigation.findNavController(this.activity as Activity, R.id.nav_host_fragment)
+                    .navigate(R.id.loginFragment)
+            } else {
+                Toast.makeText(this.context, "Account creation failed", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
     override fun onAttach(context: Context) {
