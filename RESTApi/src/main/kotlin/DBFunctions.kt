@@ -81,3 +81,6 @@ fun deleteUser(user: User, db: Database): String {
     }
     return result!!
 }
+
+fun resetUserPass(user: User, db: Database): String {
+}
