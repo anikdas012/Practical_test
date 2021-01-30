@@ -40,3 +40,6 @@ fun getUsers(db: Database): List<User> {
     }
     return users
 }
+
+fun updateUser(user: User, db: Database): String {
+}
