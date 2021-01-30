@@ -4,6 +4,7 @@ import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
 import tk.anikdas.anikdas012.mobileapplication.network.CreateApi
+import tk.anikdas.anikdas012.mobileapplication.network.LoginApi
 
 /**
  * Created by "Anik Das" on 30-Jan-2021
@@ -17,4 +18,9 @@ object FragmentModule {
     @JvmStatic
     @Provides
     fun provideCreateApi(retrofit: Retrofit): CreateApi = retrofit.create(CreateApi::class.java)
+
+    @FragmentScope
+    @JvmStatic
+    @Provides
+    fun provideLoginApi(retrofit: Retrofit): LoginApi = retrofit.create(LoginApi::class.java)
 }
