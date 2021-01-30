@@ -6,6 +6,7 @@ import dagger.Module
 import dagger.multibindings.IntoMap
 import tk.anikdas.anikdas012.mobileapplication.viewmodel.CreateViewModel
 import tk.anikdas.anikdas012.mobileapplication.viewmodel.LoginViewModel
+import tk.anikdas.anikdas012.mobileapplication.viewmodel.ResetPasswordViewModel
 
 /**
  * Created by "Anik Das" on 30-Jan-2021
@@ -24,4 +25,9 @@ abstract class FragmentViewModelModule {
     @IntoMap
     @ViewModelKey(LoginViewModel::class)
     abstract fun bindLoginViewModel(viewModel: LoginViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ResetPasswordViewModel::class)
+    abstract fun bindResetPasswordViewModel(viewModel: ResetPasswordViewModel): ViewModel
 }
