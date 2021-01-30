@@ -13,6 +13,6 @@ import tk.anikdas.anikdas012.mobileapplication.models.UserDetails
 
 interface CreateApi {
 
-    @POST("/createUser")
+    @POST("createUser")
     fun createAccount(@Body userDetails: UserDetails): Flowable<UserDetails>
 }
