@@ -23,7 +23,7 @@ object AppModule {
     @Provides
     fun provideRetrofitInstance() : Retrofit {
         return Retrofit.Builder()
-            .baseUrl("127.0.0.1:8080/api")
+            .baseUrl("http://127.0.0.1:8080/api/")
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
