@@ -29,5 +29,10 @@ fun Route.api() {
             val result = deleteUser(user, db)
             call.respond(HttpStatusCode.OK, result)
         }
+        put ("/resetPass") {
+            val user = call.receive<User>()
+            val result = resetUserPass(user, db)
+            call.respond(HttpStatusCode.OK, result)
+        }
     }
 }
