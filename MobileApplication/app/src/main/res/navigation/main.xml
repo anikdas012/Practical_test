@@ -14,31 +14,31 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="tk.anikdas.anikdas012.mobileapplication.ui.LogInFragment"
-        android:label="HomeFragment"
+        android:label="LogInFragment"
         tools:layout="@layout/fragment_login"/>
 
     <fragment
         android:id="@+id/createFragment"
         android:name="tk.anikdas.anikdas012.mobileapplication.ui.CreateFragment"
-        android:label="HomeFragment"
+        android:label="CreateFragment"
         tools:layout="@layout/fragment_create"/>
 
     <fragment
         android:id="@+id/forgotPasswordFragment"
         android:name="tk.anikdas.anikdas012.mobileapplication.ui.ForgotPasswordFragment"
-        android:label="HomeFragment"
+        android:label="ForgotPasswordFragment"
         tools:layout="@layout/fragment_forgot_password"/>
 
     <fragment
         android:id="@+id/resetPasswordFragment"
         android:name="tk.anikdas.anikdas012.mobileapplication.ui.ResetPasswordFragment"
-        android:label="HomeFragment"
+        android:label="ResetPasswordFragment"
         tools:layout="@layout/fragment_reset_password"/>
 
     <fragment
         android:id="@+id/resetSuccessFragment"
         android:name="tk.anikdas.anikdas012.mobileapplication.ui.ResetSuccessFragment"
-        android:label="HomeFragment"
+        android:label="ResetSuccesFragment"
         tools:layout="@layout/fragment_reset_success"/>
 
 </navigation>
