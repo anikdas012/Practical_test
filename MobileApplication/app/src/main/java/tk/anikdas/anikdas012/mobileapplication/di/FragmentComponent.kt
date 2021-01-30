@@ -4,6 +4,7 @@ import dagger.Subcomponent
 import tk.anikdas.anikdas012.mobileapplication.MainActivity
 import tk.anikdas.anikdas012.mobileapplication.ui.CreateFragment
 import tk.anikdas.anikdas012.mobileapplication.ui.LogInFragment
+import tk.anikdas.anikdas012.mobileapplication.ui.ResetPasswordFragment
 
 /**
  * Created by "Anik Das" on 30-Jan-2021
@@ -24,4 +25,5 @@ interface FragmentComponent {
 
     fun inject(fragment: CreateFragment)
     fun inject(fragment: LogInFragment)
+    fun inject(fragment: ResetPasswordFragment)
 }
