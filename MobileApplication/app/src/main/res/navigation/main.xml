@@ -11,4 +11,10 @@
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home"/>
 
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="tk.anikdas.anikdas012.mobileapplication.ui.LogInFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_login"/>
+
 </navigation>
