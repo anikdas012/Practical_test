@@ -42,4 +42,7 @@ fun getUsers(db: Database): List<User> {
 }
 
 fun updateUser(user: User, db: Database): String {
+    if (user.email.isNullOrEmpty()) {
+        return "Enter a valid 'email'"
+    }
 }
