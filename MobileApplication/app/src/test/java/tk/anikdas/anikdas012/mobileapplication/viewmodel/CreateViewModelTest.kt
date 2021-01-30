@@ -26,4 +26,7 @@ import tk.anikdas.anikdas012.mobileapplication.network.CreateApi
 class CreateViewModelTest {
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
+
+    @Mock
+    lateinit var createApi: CreateApi
 }
