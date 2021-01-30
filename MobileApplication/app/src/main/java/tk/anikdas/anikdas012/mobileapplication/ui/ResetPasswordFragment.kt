@@ -1,12 +1,14 @@
 package tk.anikdas.anikdas012.mobileapplication.ui
 
 import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import tk.anikdas.anikdas012.mobileapplication.MainActivity
 import tk.anikdas.anikdas012.mobileapplication.R
 import tk.anikdas.anikdas012.mobileapplication.databinding.FragmentResetPasswordBinding
 
@@ -37,5 +39,10 @@ class ResetPasswordFragment : Fragment() {
             Navigation.findNavController(this.activity as Activity, R.id.nav_host_fragment)
                 .navigate(R.id.loginFragment)
         }
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        (activity as MainActivity).fragmentComponent.inject(this)
     }
 }
