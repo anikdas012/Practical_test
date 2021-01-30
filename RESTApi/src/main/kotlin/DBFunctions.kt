@@ -114,8 +114,8 @@ fun resetUserPass(user: User, db: Database): String {
 fun createUser(user: UserDetails, db: Database): String {
     if (user.password != user.confirmPassword) {
         return "{\n" +
-                "    \"name\": \"${user.name}\"\n" +
-                "    \"email\": \"${user.email}\"\n" +
+                "    \"name\": \"${user.name}\",\n" +
+                "    \"email\": \"${user.email}\",\n" +
                 "    \"createdAt\": \"-1\"\n" +
                 "}"
     }
@@ -126,15 +126,15 @@ fun createUser(user: UserDetails, db: Database): String {
         try {
             exec(sql)
             result = "{\n" +
-                    "    \"name\": \"${user.name}\"\n" +
-                    "    \"email\": \"${user.email}\"\n" +
+                    "    \"name\": \"${user.name}\",\n" +
+                    "    \"email\": \"${user.email}\",\n" +
                     "    \"createdAt\": ${user.time}\n" +
                     "}"
         } catch (e: Exception) {
             user.time = -1
             result = "{\n" +
-                    "    \"name\": \"${user.name}\"\n" +
-                    "    \"email\": \"${user.email}\"\n" +
+                    "    \"name\": \"${user.name}\",\n" +
+                    "    \"email\": \"${user.email}\",\n" +
                     "    \"createdAt\": ${user.time}\n" +
                     "}"
         }
