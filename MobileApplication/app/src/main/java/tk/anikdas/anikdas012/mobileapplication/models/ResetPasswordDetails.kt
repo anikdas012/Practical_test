@@ -11,5 +11,6 @@ data class ResetPasswordDetails(
     @SerializedName("name") var username: String? = null,
     @SerializedName("email") var email: String?,
     @SerializedName("password") var password: String?,
-    @SerializedName("confirmPassword") var confirmPassword: String?
+    @SerializedName("confirmPassword") var confirmPassword: String?,
+    @SerializedName("code") var code: String?
 )
