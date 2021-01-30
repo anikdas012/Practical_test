@@ -69,4 +69,15 @@ fun deleteUser(user: User, db: Database): String {
     if (user.name.isNullOrEmpty() || user.email.isNullOrBlank()) {
         return "Not deleted \nEnter a valid 'name' and 'email'"
     }
+    var result: String? = null
+    transaction(db) {
+        val sql = "DELETE FROM User WHERE UserName = \"${user.name!!}\" and Email = \"${user.email!!}\""
+        try {
+            exec(sql)
+            result = "Deleted"
+        } catch (e: Exception) {
+            result = "Not deleted"
+        }
+    }
+    return result!!
 }
