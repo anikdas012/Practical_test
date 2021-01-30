@@ -29,4 +29,10 @@
         android:label="HomeFragment"
         tools:layout="@layout/fragment_reset_password"/>
 
+    <fragment
+        android:id="@+id/resetSuccessFragment"
+        android:name="tk.anikdas.anikdas012.mobileapplication.ui.ResetSuccessFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_reset_success"/>
+
 </navigation>
