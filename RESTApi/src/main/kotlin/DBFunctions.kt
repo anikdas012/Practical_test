@@ -64,3 +64,6 @@ fun updateUser(user: User, db: Database): String {
     }
     return result!!
 }
+
+fun deleteUser(user: User, db: Database): String {
+}
