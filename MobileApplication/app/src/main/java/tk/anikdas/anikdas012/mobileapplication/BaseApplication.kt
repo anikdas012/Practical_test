@@ -9,7 +9,7 @@ import tk.anikdas.anikdas012.mobileapplication.di.DaggerAppComponent
  * Developer email: "anikdas012@gmail.com"
  */
 
-class BaseAplication : Application() {
+class BaseApplication : Application() {
 
     val appComponent: AppComponent by lazy {
         DaggerAppComponent.builder()
