@@ -12,5 +12,5 @@ data class UserDetails(
     @SerializedName("email") var email: String?,
     @SerializedName("password") var password: String?,
     @SerializedName("confirmPassword") var confirmPassword: String?,
-    @SerializedName("createdAt") var createdAt: Long?
+    @SerializedName("createdAt") var createdAt: Long? = null
 )
