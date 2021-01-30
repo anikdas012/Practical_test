@@ -17,4 +17,10 @@
         android:label="HomeFragment"
         tools:layout="@layout/fragment_login"/>
 
+    <fragment
+        android:id="@+id/forgotPasswordFragment"
+        android:name="tk.anikdas.anikdas012.mobileapplication.ui.ForgotPasswordFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_forgot_password"/>
+
 </navigation>
