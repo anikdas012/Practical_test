@@ -45,6 +45,13 @@ class CreateFragment : Fragment() {
             Navigation.findNavController(this.activity as Activity, R.id.nav_host_fragment)
                 .navigate(R.id.loginFragment)
         }
+        binding.createTextview.setOnClickListener {
+            createAccount()
+        }
+    }
+
+    private fun createAccount() {
+        TODO("Not yet implemented")
     }
 
     override fun onAttach(context: Context) {
