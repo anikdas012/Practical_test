@@ -110,3 +110,22 @@ fun resetUserPass(user: User, db: Database): String {
     }
     return result!!
 }
+
+fun createUser(user: UserDetails, db: Database): String {
+    if (user.password != user.confirmPassword) {
+        return "Passwords did not match"
+    }
+    user.password = user.password.sha256()
+    var result: String? = null
+    transaction(db) {
+        val sql = "INSERT INTO User (UserName, Email, PasswordHash, CreatedAt) VALUES (\"${user.name}\", \"${user.email}\", \"${user.password}\", ${user.time});"
+        try {
+            exec(sql)
+            result = "Success"
+        } catch (e: Exception) {
+            result = "Failed"
+        }
+
+    }
+    return result!!
+}
