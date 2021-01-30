@@ -10,7 +10,10 @@ import tk.anikdas.anikdas012.mobileapplication.ui.CreateFragment
  */
 
 @FragmentScope
-@Subcomponent
+@Subcomponent(
+        modules = [FragmentModule::class,
+                    FragmentViewModelModule::class]
+)
 interface FragmentComponent {
 
     @Subcomponent.Builder
@@ -18,6 +21,5 @@ interface FragmentComponent {
         fun build(): FragmentComponent
     }
 
-    fun inject(activity: MainActivity)
     fun inject(fragment: CreateFragment)
 }
