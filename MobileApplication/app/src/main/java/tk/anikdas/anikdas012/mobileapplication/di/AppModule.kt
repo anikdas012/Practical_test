@@ -26,9 +26,4 @@ object AppModule {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
-
-    @Singleton
-    @JvmStatic
-    @Provides
-    fun provideCreateApi(retrofit: Retrofit): CreateApi = retrofit.create(CreateApi::class.java)
 }
