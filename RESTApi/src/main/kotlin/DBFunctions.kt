@@ -142,3 +142,28 @@ fun createUser(user: UserDetails, db: Database): String {
     }
     return result!!
 }
+
+fun loginUser(user: UserLogin, db: Database): String {
+    user.password = user.password?.sha256()
+    var result: String? = null
+    transaction(db) {
+        val sql = "SELECT * FROM User WHERE UserName = \"${user.email}\" and PasswordHash = \"${user.password}\""
+        try {
+            exec(sql) {
+                if (it.next()) {
+                    result = "{\n" +
+                            "    \"name\": \"${it.getString(1)}\",\n" +
+                            "    \"email\": \"${it.getString(2)}\"\n" +
+                            "}"
+                }
+            }
+        } catch (e: Exception) {
+            result = "{\n" +
+                    "    \"name\": \"Not found\",\n" +
+                    "    \"email\": \"not found\",\n" +
+                    "}"
+        }
+
+    }
+    return result!!
+}

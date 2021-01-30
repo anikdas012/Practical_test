@@ -40,5 +40,10 @@ fun Route.api() {
             val result = createUser(user, db)
             call.respond(HttpStatusCode.OK, result)
         }
+        post ("/loginUser") {
+            val user = call.receive<UserLogin>()
+            val result = loginUser(user, db)
+            call.respond(HttpStatusCode.OK, result)
+        }
     }
 }

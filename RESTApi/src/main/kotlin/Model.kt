@@ -12,3 +12,9 @@ data class UserDetails(
     var confirmPassword: String,
     var time: Long?
 )
+
+data class UserLogin(
+    var name: String?,
+    var email: String?,
+    var password: String?
+)
