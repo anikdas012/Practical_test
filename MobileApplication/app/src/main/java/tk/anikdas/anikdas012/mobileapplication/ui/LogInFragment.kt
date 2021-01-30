@@ -12,8 +12,10 @@ import androidx.navigation.Navigation
 import tk.anikdas.anikdas012.mobileapplication.MainActivity
 import tk.anikdas.anikdas012.mobileapplication.R
 import tk.anikdas.anikdas012.mobileapplication.databinding.FragmentLoginBinding
+import tk.anikdas.anikdas012.mobileapplication.models.LogInDetails
 import tk.anikdas.anikdas012.mobileapplication.models.UserDetails
 import tk.anikdas.anikdas012.mobileapplication.viewmodel.CreateViewModel
+import tk.anikdas.anikdas012.mobileapplication.viewmodel.LoginViewModel
 import tk.anikdas.anikdas012.mobileapplication.viewmodel.ViewModelProvidersFactory
 import javax.inject.Inject
 
@@ -25,7 +27,7 @@ import javax.inject.Inject
 class LogInFragment : Fragment() {
 
     private lateinit var binding: FragmentLoginBinding
-    private lateinit var viewModel: CreateViewModel
+    private lateinit var viewModel: LoginViewModel
     @Inject
     lateinit var providersFactory: ViewModelProvidersFactory
 
@@ -41,7 +43,7 @@ class LogInFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this, providersFactory).get(CreateViewModel::class.java)
+        viewModel = ViewModelProvider(this, providersFactory).get(LoginViewModel::class.java)
         binding.forgotPasswordTextview.setOnClickListener {
             Navigation.findNavController(this.activity as Activity, R.id.nav_host_fragment)
                 .navigate(R.id.forgotPasswordFragment)
