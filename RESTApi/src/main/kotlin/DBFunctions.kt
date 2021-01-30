@@ -113,7 +113,11 @@ fun resetUserPass(user: User, db: Database): String {
 
 fun createUser(user: UserDetails, db: Database): String {
     if (user.password != user.confirmPassword) {
-        return "Passwords did not match"
+        return "{\n" +
+                "    \"name\": \"${user.name}\"\n" +
+                "    \"email\": \"${user.email}\"\n" +
+                "    \"createdAt\": \"-1\"\n" +
+                "}"
     }
     user.password = user.password.sha256()
     var result: String? = null
@@ -124,14 +128,14 @@ fun createUser(user: UserDetails, db: Database): String {
             result = "{\n" +
                     "    \"name\": \"${user.name}\"\n" +
                     "    \"email\": \"${user.email}\"\n" +
-                    "    \"createdAt\": \"${user.time}\"\n" +
+                    "    \"createdAt\": ${user.time}\n" +
                     "}"
         } catch (e: Exception) {
             user.time = -1
             result = "{\n" +
                     "    \"name\": \"${user.name}\"\n" +
                     "    \"email\": \"${user.email}\"\n" +
-                    "    \"createdAt\": \"${user.time}\"\n" +
+                    "    \"createdAt\": ${user.time}\n" +
                     "}"
         }
 
