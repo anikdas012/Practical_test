@@ -1,6 +1,7 @@
 package tk.anikdas.anikdas012.mobileapplication.di
 
 import dagger.Subcomponent
+import tk.anikdas.anikdas012.mobileapplication.ui.CreateFragment
 
 /**
  * Created by "Anik Das" on 30-Jan-2021
@@ -15,4 +16,6 @@ interface FragmentComponent {
     interface Builder {
         fun build(): FragmentComponent
     }
+
+    fun inject(fragment: CreateFragment)
 }
