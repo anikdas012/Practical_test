@@ -36,4 +36,25 @@ class CreateViewModelTest {
         MockitoAnnotations.initMocks(this)
         viewModel = CreateViewModel(createApi)
     }
+
+    @Test
+    fun `Create user with two different password`() {
+        val userDetails = UserDetails(
+            username = "name",
+            email = "demo@demo.com",
+            password = "demo",
+            confirmPassword = "demo4"
+        )
+        val response = UserDetails(
+            username = "name",
+            email = "demo@demo.com",
+            createdAt = -1,
+            password = null,
+            confirmPassword = null
+        )
+        `when`(createApi.createAccount(userDetails)).thenReturn(Flowable.just(response))
+        assertNotNull(viewModel.createUser(userDetails))
+        val value = viewModel.createUser(userDetails).getOrAwaitValueTest()
+        assertThat(value.createdAt?.toInt(), `is`(-1))
+    }
 }
