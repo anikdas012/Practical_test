@@ -18,6 +18,12 @@
         tools:layout="@layout/fragment_login"/>
 
     <fragment
+        android:id="@+id/createFragment"
+        android:name="tk.anikdas.anikdas012.mobileapplication.ui.CreateFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_create"/>
+
+    <fragment
         android:id="@+id/forgotPasswordFragment"
         android:name="tk.anikdas.anikdas012.mobileapplication.ui.ForgotPasswordFragment"
         android:label="HomeFragment"
