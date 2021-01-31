@@ -34,5 +34,21 @@ fun Route.api() {
             val result = resetUserPass(user, db)
             call.respond(HttpStatusCode.OK, result)
         }
+        post ("/createUser") {
+            val user = call.receive<UserDetails>()
+            user.time = System.currentTimeMillis()
+            val result = createUser(user, db)
+            call.respond(HttpStatusCode.OK, result)
+        }
+        post ("/loginUser") {
+            val user = call.receive<UserLogin>()
+            val result = loginUser(user, db)
+            call.respond(HttpStatusCode.OK, result)
+        }
+        post ("/resetPassword") {
+            val user = call.receive<ResetPassword>()
+            val result = resetUserPassword(user, db)
+            call.respond(HttpStatusCode.OK, result)
+        }
     }
 }

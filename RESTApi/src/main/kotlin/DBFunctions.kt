@@ -110,3 +110,90 @@ fun resetUserPass(user: User, db: Database): String {
     }
     return result!!
 }
+
+fun createUser(user: UserDetails, db: Database): String {
+    if (user.password != user.confirmPassword) {
+        return "{\n" +
+                "    \"name\": \"${user.name}\",\n" +
+                "    \"email\": \"${user.email}\",\n" +
+                "    \"createdAt\": \"-1\"\n" +
+                "}"
+    }
+    user.password = user.password.sha256()
+    var result: String? = null
+    transaction(db) {
+        val sql = "INSERT INTO User (UserName, Email, PasswordHash, CreatedAt) VALUES (\"${user.name}\", \"${user.email}\", \"${user.password}\", ${user.time});"
+        try {
+            exec(sql)
+            result = "{\n" +
+                    "    \"name\": \"${user.name}\",\n" +
+                    "    \"email\": \"${user.email}\",\n" +
+                    "    \"createdAt\": ${user.time}\n" +
+                    "}"
+        } catch (e: Exception) {
+            user.time = -1
+            result = "{\n" +
+                    "    \"name\": \"${user.name}\",\n" +
+                    "    \"email\": \"${user.email}\",\n" +
+                    "    \"createdAt\": ${user.time}\n" +
+                    "}"
+        }
+
+    }
+    return result!!
+}
+
+fun loginUser(user: UserLogin, db: Database): String {
+    user.password = user.password?.sha256()
+    var result: String? = null
+    transaction(db) {
+        val sql = "SELECT * FROM User WHERE UserName = \"${user.email}\" and PasswordHash = \"${user.password}\""
+        try {
+            exec(sql) {
+                if (it.next()) {
+                    result = "{\n" +
+                            "    \"name\": \"${it.getString(1)}\",\n" +
+                            "    \"email\": \"${it.getString(2)}\"\n" +
+                            "}"
+                }
+            }
+        } catch (e: Exception) {
+            result = "{\n" +
+                    "    \"name\": \"Not found\",\n" +
+                    "    \"email\": \"not found\",\n" +
+                    "}"
+        }
+
+    }
+    return result!!
+}
+
+fun resetUserPassword(user: ResetPassword, db: Database): String {
+    if (user.password != user.confirmPassword) {
+        return "{\n" +
+                "    \"name\": \"Not updated\",\n" +
+                "    \"email\": \"${user.email}\"\n"
+                "}"
+    }
+    var result: String? = null
+    transaction(db) {
+        val sql = "UPDATE User SET PasswordHash = \"${user.password?.sha256()}\" WHERE Email = \"${user.email}\";"
+        try {
+            exec(sql)
+            exec("SELECT UserName, Email FROM User WHERE Email = \"${user.email}\";") {
+                while (it.next()) {
+                    result = "{\n" +
+                            "   \"name\": \"${it.getString(1)}\",\n" +
+                            "   \"email\": \"${it.getString(2)}\"\n" +
+                            "}"
+                }
+            }
+        } catch (e: Exception) {
+            result = "{\n" +
+                    "    \"name\": \"Not updated\",\n" +
+                    "    \"email\": \"${user.email}\"\n"
+            "}"
+        }
+    }
+    return result!!
+}
