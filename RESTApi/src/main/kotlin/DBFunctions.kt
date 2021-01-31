@@ -53,8 +53,8 @@ fun updateUser(user: User, db: Database): String {
             exec("SELECT UserName, Email FROM User WHERE Email = \"${user.email}\";") {
                 while (it.next()) {
                     result = "{\n" +
-                            "   \"name\": \"${it.getString(1)}\"\n" +
-                            "   \"email\": \"${it.getString(2)}\"\n" +
+                            "   \"name\": \"${it.getString(1)}\",\n" +
+                            "   \"email\": \"${it.getString(2)}\",\n" +
                             "}"
                 }
             }
@@ -99,8 +99,8 @@ fun resetUserPass(user: User, db: Database): String {
             exec("SELECT UserName, Email FROM User WHERE Email = \"${user.email}\";") {
                 while (it.next()) {
                     result = "{\n" +
-                            "   \"name\": \"${it.getString(1)}\"\n" +
-                            "   \"email\": \"${it.getString(2)}\"\n" +
+                            "   \"name\": \"${it.getString(1)}\",\n" +
+                            "   \"email\": \"${it.getString(2)}\",\n" +
                             "}"
                 }
             }
