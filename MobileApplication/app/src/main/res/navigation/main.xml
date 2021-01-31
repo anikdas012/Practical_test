@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="tk.anikdas.anikdas012.mobileapplication.ui.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home"/>
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="tk.anikdas.anikdas012.mobileapplication.ui.LogInFragment"
+        android:label="LogInFragment"
+        tools:layout="@layout/fragment_login"/>
+
+    <fragment
+        android:id="@+id/createFragment"
+        android:name="tk.anikdas.anikdas012.mobileapplication.ui.CreateFragment"
+        android:label="CreateFragment"
+        tools:layout="@layout/fragment_create"/>
+
+    <fragment
+        android:id="@+id/forgotPasswordFragment"
+        android:name="tk.anikdas.anikdas012.mobileapplication.ui.ForgotPasswordFragment"
+        android:label="ForgotPasswordFragment"
+        tools:layout="@layout/fragment_forgot_password"/>
+
+    <fragment
+        android:id="@+id/resetPasswordFragment"
+        android:name="tk.anikdas.anikdas012.mobileapplication.ui.ResetPasswordFragment"
+        android:label="ResetPasswordFragment"
+        tools:layout="@layout/fragment_reset_password"/>
+
+    <fragment
+        android:id="@+id/resetSuccessFragment"
+        android:name="tk.anikdas.anikdas012.mobileapplication.ui.ResetSuccessFragment"
+        android:label="ResetSuccesFragment"
+        tools:layout="@layout/fragment_reset_success"/>
+
+</navigation>

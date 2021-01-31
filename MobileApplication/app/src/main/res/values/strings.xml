@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">MobileApplication</string>
+    <string name="tasks_and_assign">Tasks and assign</string>
+    <string name="task_and_assign_them_to_colleauges">Task and assign them to colleauges.</string>
+    <string name="log_in">Log In</string>
+    <string name="get_started">Get Started</string>
+    <string name="welcome_back">Welcome back</string>
+    <string name="sign_in_to_continue">Sign in to continue</string>
+    <string name="username">Username</string>
+    <string name="enter_your_username">Enter your username</string>
+    <string name="password">Password</string>
+    <string name="enter_your_password">Enter your password</string>
+    <string name="forgot_password">Forgot password</string>
+    <string name="don_t_have_aking_account_sign_up">Don\'t have aKing account? <font color='#45a6cc'>Sign up</font></string>
+    <string name="forgot_password_textview">Forgot Password</string>
+    <string name="instruction">Please enter your email below to recevie your password reset instructions</string>
+    <string name="send_request">Send Request</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="reset_ins">Reset code was sent to your email. Please enter the code and create new password</string>
+    <string name="reset_code">Reset code</string>
+    <string name="enter_your_number">Enter your number</string>
+    <string name="new_password">New password</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="enter_your_confirm_password">Enter your confirm password</string>
+    <string name="change_password">Change password</string>
+    <string name="ins">You have succesfully change password. Please use your new passowrds when logging in.</string>
+    <string name="succesful">Succesful!</string>
+    <string name="welcome">Welcome</string>
+    <string name="sign_up_to_continue">Sign up to continue</string>
+    <string name="email">Email</string>
+    <string name="enter_your_email">Enter your email</string>
+    <string name="create_account">Create account</string>
+</resources>
