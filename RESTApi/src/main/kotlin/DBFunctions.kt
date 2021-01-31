@@ -147,7 +147,7 @@ fun loginUser(user: UserLogin, db: Database): String {
     user.password = user.password?.sha256()
     var result: String? = null
     transaction(db) {
-        val sql = "SELECT * FROM User WHERE UserName = \"${user.email}\" and PasswordHash = \"${user.password}\""
+        val sql = "SELECT * FROM User WHERE Email = \"${user.email}\" and PasswordHash = \"${user.password}\""
         try {
             exec(sql) {
                 if (it.next()) {
