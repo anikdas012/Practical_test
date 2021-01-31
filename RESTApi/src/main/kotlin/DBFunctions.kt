@@ -66,7 +66,7 @@ fun updateUser(user: User, db: Database): String {
 }
 
 fun deleteUser(user: User, db: Database): String {
-    if (user.name.isNullOrEmpty() || user.email.isNullOrBlank()) {
+    if (user.name.isNullOrEmpty() && user.email.isNullOrBlank()) {
         return "Not deleted \nEnter a valid 'name' and 'email'"
     }
     var result: String? = null
