@@ -152,8 +152,8 @@ fun loginUser(user: UserLogin, db: Database): String {
             exec(sql) {
                 if (it.next()) {
                     result = "{\n" +
-                            "    \"name\": \"${it.getString(1)}\",\n" +
-                            "    \"email\": \"${it.getString(2)}\"\n" +
+                            "    \"name\": \"${it.getString(2)}\",\n" +
+                            "    \"email\": \"${it.getString(3)}\"\n" +
                             "}"
                 }
             }
